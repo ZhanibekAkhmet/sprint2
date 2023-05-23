@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/layout/main.html">
+<div layout:fragment="productsContent" class="mb-2">
+  <div class="row mt-3 " >
+    <div class="col-6 justify-content-center offset-3" th:if="${zaya!=null}">
+      <form action="/saveApp" method="post">
+        <input type="hidden" name="id" th:value="${zaya.id}">
+        <h3 class="text-center" th:if="${zaya.handled==true}" style="color: green">Обработанная заявка</h3>
+        <h3 class="text-center" th:if="${zaya.handled==false}" style="color: red">*** Новая необработанная заявка ***</h3>
+        <div class="mb-3 mt-2">
+          <label for="exampleFormControlInput1" class="form-label">ФИО</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" readonly placeholder="Наименование:" name="userName" th:value="${zaya.userName}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Курс</label>
+          <input type="hidden" name="courses.id" th:value="${zaya.courses.id}">
+          <input type="text" class="form-control" readonly id="exampleFormControlInput112" placeholder="Курс:" th:value="${zaya.courses.nameCourse}">
+
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Коментарий</label>
+          <textarea class="form-control" id="exampleFormControlInput12" readonly name="commentary" placeholder="Коментарий:" th:text="${zaya.commentary}"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Телефон</label>
+          <input type="text" class="form-control" id="exampleFormControlInput123" readonly name="phone" placeholder="Телефон:" th:value="${zaya.phone}">
+        </div>
+        <div>
+          <input type="hidden" name="handled" th:value="true">
+          <button class="btn btn-success" th:if="${zaya.handled==false}">Обработать заявку</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteleModal">
+            Удалить заявку
+          </button>
+<!--          -->
+        </div>
+      </form>
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteleModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form action="/deleteApp" method="post">
+              <input type="hidden" name="id" th:value="${zaya.id}">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Подтверждение удаления</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Вы уверены?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-danger">Удалить</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

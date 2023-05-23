@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/layout/main.html">
+<div layout:fragment="productsContent" class="mb-2">
+    <div class="row mt-3 " >
+        <div class="col-6 justify-content-center offset-3" >
+            <form action="/addApp" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">ФИО</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ФИО:" name="userName">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Курс</label>
+                    <select class="form-select" name="courses.id">
+                        <option th:each="kur:${kurs}" th:value="${kur.id}"
+                                th:text="${kur.nameCourse+' - '+kur.price+'$'}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Коментарий</label>
+                    <textarea class="form-control" id="exampleFormControlInput12" name="commentary" placeholder="Коментарий:"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Телефон</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput123" name="phone" placeholder="Телефон:+7(777)777-77-77">
+                    <input type="hidden" name="handled" th:value="false">
+                </div>
+                <div>
+                    <button class="btn btn-success" >Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

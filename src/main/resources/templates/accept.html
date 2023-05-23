@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/layout/main.html">
+<div layout:fragment="productsContent" class="mb-2">
+  <div class="row mt-3 " >
+    <div class="col-md-6 mt-2" th:each="zay:${zaver}">
+      <div class="card" style="width: 40rem;">
+        <div class="card-body">
+          <h4 class="card-title" th:text="${'Заявка от '+zay.userName}"></h4>
+          <br>
+          <h5 class="card-subtitle mb-2 text-body-secondary" th:text="${'Курс: '+zay.courses.nameCourse}">Card subtitle</h5>
+          <p3 class="card-text" th:text="${zay.commentary}"></p3>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col">
+              <div class="d-flex">
+                <h5 class="card-title" th:text="${'Тел: '+zay.phone}" style="margin-right: 3rem;"></h5>
+                <a th:href="@{'/details/'+${zay.id}}"  class="card-link">подробнее</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
