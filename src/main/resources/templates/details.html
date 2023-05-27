@@ -27,13 +27,78 @@
         </div>
         <div>
           <input type="hidden" name="handled" th:value="true">
-          <button class="btn btn-success" th:if="${zaya.handled==false}">Обработать заявку</button>
+          <!-- Button trigger modal -->
+          <button  th:if="${zaya.handled==false}" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Обработать заявку
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <tr>
+                      <th>Выбрать</th>
+                      <th>Имя</th>
+                      <th>Фамилия</th>
+                      <th>Департамент</th>
+                    </tr>
+                    <tr th:each="op:${oper}">
+                      <td>
+                        <input type="hidden" name="requestId" th:value="${zaya.getId()}">
+                        <input type="checkbox" name="operatsId[]" th:value="${op.getId()}">
+                      </td>
+                      <td th:text="${op.name}"></td>
+                      <td th:text="${op.surname}"></td>
+                      <td th:text="${op.department}"></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                  <button type="submit" class="btn btn-primary">Назначить</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteleModal">
             Удалить заявку
           </button>
 <!--          -->
         </div>
       </form>
+      <form action="/deletOp" method="post">
+
+        <table class="table table-striped mt-3" th:if="${zaya.handled==true}">
+          <thead>
+          <tr>
+            <th scope="col">Удалить</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Департамент</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="chel:${operatory}">
+            <input type="hidden" name="userID" th:value="${zaya.id}">
+            <input type="hidden" name="operID" th:value="${chel.id}">
+            <td>
+              <button type="submit" class="btn btn-danger">
+                X
+              </button>
+            </td>
+            <td th:text="${chel.name}"></td>
+            <td th:text="${chel.surname}"></td>
+            <td th:text="${chel.department}"></td>
+          </tbody>
+        </table>
+      </form>
+
       <!-- Button trigger modal -->
 
 

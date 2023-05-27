@@ -6,7 +6,7 @@
             <form action="/addApp" method="post">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">ФИО</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ФИО:" name="userName">
+                    <input type="text" required class="form-control" id="exampleFormControlInput1" placeholder="ФИО:" name="userName">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Курс</label>
@@ -17,11 +17,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Коментарий</label>
-                    <textarea class="form-control" id="exampleFormControlInput12" name="commentary" placeholder="Коментарий:"></textarea>
+                    <textarea class="form-control" required id="exampleFormControlInput12" name="commentary" placeholder="Коментарий:"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Телефон</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput123" name="phone" placeholder="Телефон:+7(777)777-77-77">
+                    <input type="text" required class="form-control" id="exampleFormControlInput123" name="phone" placeholder="Телефон:+7(777)777-77-77">
                     <input type="hidden" name="handled" th:value="false">
                 </div>
                 <div>

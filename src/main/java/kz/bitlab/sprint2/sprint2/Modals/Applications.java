@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @Entity
 @Table (name = "applications")
 @Getter
@@ -28,5 +30,6 @@ public class Applications {
     private Boolean handled;
     @ManyToOne
     private Courses courses;
-
+    @ManyToMany
+    private List<Operators> operators;
 }

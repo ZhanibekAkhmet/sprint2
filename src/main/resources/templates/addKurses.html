@@ -6,15 +6,15 @@
       <form action="/addCourse" method="post">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Курс:</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Наименование курса:" name="nameCourse">
+          <input type="text" required class="form-control" id="exampleFormControlInput1" placeholder="Наименование курса:" name="nameCourse">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Цена</label>
-          <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Цена курса:" name="price">
+          <input type="text" required class="form-control" id="exampleFormControlInput2" placeholder="Цена курса:" name="price">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Описание</label>
-          <textarea class="form-control" id="exampleFormControlInput12" name="description" placeholder="Описание курса:"></textarea>
+          <textarea class="form-control" required id="exampleFormControlInput12" name="description" placeholder="Описание курса:"></textarea>
         </div>
         <div>
           <button class="btn btn-success" >Добавить</button>
